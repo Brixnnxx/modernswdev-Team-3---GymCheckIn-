@@ -11,3 +11,6 @@ Frontend: HTML, CSS, JavaScript
 Backend/API: Node.js and Express(JavaScript)
 Database: SQL (PostgreSQL)
 Payments: Stripe or Square
+
+## Mission Statement
+Our goal is to create a software application that allows gym members to check in when they arrive at the facility by entering their information or scanning an ID. The system keeps track of each member's visit history and automatically verifies whether their membership is active or expired. It's designed to streamline the check-in process for both gym staff and members, replacing the need for manual sign-in sheets or outdated paper records.
