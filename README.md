@@ -35,7 +35,7 @@ This project is a Gym Check-In & Billing Web App that centralizes member managem
 ## User Personas
 * Front Desk Staff (Worker): performs member lookup, check-ins, basic edits, and POS transactions; needs speed and clarity.
 * Trainer (Worker): manages appointments, marks confirmed/arrived/completed, and triggers training billing when sessions are completed.
-*Manager/Admin (optional expansion): manages worker access/roles, reviews reports (attendance and revenue), and audits transactions.
+* Manager/Admin (optional expansion): manages worker access/roles, reviews reports (attendance and revenue), and audits transactions.
 
 ## Team Workflow (Scrum Simulation)
 
