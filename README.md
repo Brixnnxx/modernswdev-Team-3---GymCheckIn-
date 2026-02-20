@@ -24,34 +24,34 @@ Many gyms still rely on scattered tools (spreadsheets, paper sign-in sheets, or 
 This project is a Gym Check-In & Billing Web App that centralizes member management, check-ins, appointments, and transaction history in a single system. Staff can quickly look up members, check them in, track visit history, schedule and manage appointments (including confirmed/arrived status), and convert completed appointments into transactions. The system is backed by a relational SQL database and built with HTML and JavaScript for the user interface.
 
 ## Key Features (Initial Backlog)
-Member management: create/edit member profiles (contact info, address, emergency contact, status, notes, photo).
-Fast check-in: search or scan QR/barcode (member_code) and record check-ins (kiosk/manual/QR); block inactive/frozen members.
-Appointment scheduling: calendar/list view with trainer assignment, confirmed + arrived checkboxes, and appointment status tracking.
-POS + payments: charge memberships, services, and items; support multiple payment types (cash, card on file, new card token).
-Appointment-to-transaction conversion: completed training appointments can be billed exactly once (prevents double billing).
-Transaction history / audit trail: event log for created/paid/refunded/voided/note-added actions for accountability.
-Membership plans: support plan selection (regular/senior/etc.) and membership lifecycle (active/paused/canceled/expired).
+* Member management: create/edit member profiles (contact info, address, emergency contact, status, notes, photo).
+* Fast check-in: search or scan QR/barcode (member_code) and record check-ins (kiosk/manual/QR); block inactive/frozen members.
+* Appointment scheduling: calendar/list view with trainer assignment, confirmed + arrived checkboxes, and appointment status tracking.
+* POS + payments: charge memberships, services, and items; support multiple payment types (cash, card on file, new card token).
+* Appointment-to-transaction conversion: completed training appointments can be billed exactly once (prevents double billing).
+* Transaction history / audit trail: event log for created/paid/refunded/voided/note-added actions for accountability.
+* Membership plans: support plan selection (regular/senior/etc.) and membership lifecycle (active/paused/canceled/expired).
 
 ## User Personas
-Front Desk Staff (Worker): performs member lookup, check-ins, basic edits, and POS transactions; needs speed and clarity.
-Trainer (Worker): manages appointments, marks confirmed/arrived/completed, and triggers training billing when sessions are completed.
-Manager/Admin (optional expansion): manages worker access/roles, reviews reports (attendance and revenue), and audits transactions.
+* Front Desk Staff (Worker): performs member lookup, check-ins, basic edits, and POS transactions; needs speed and clarity.
+* Trainer (Worker): manages appointments, marks confirmed/arrived/completed, and triggers training billing when sessions are completed.
+*Manager/Admin (optional expansion): manages worker access/roles, reviews reports (attendance and revenue), and audits transactions.
 
 ## Team Workflow (Scrum Simulation)
 
 ## Communication
 Slack will be used for daily syncs and quick updates. The Scrum Master will create a team channel and post daily prompts:
-What did you complete yesterday?
-What are you working on today?
-Any blockers?
+* What did you complete yesterday?
+* What are you working on today?
+* Any blockers?
 
 ## Meeting Cadence
- Sprint Planning: at least 1x per week (recommended 2x per week).
-Sprint Retrospective: 1x per week.
-Roles rotate every 2 weeks so each teammate practices leadership.
+* Sprint Planning: at least 1x per week (recommended 2x per week).
+* Sprint Retrospective: 1x per week.
+* Roles rotate every 2 weeks so each teammate practices leadership.
 
 ## Branching Strategy & Pull Requests
-Use feature branches from main (example: feature/member-management, feature/checkin-flow).
-Keep branches focused (one user story or small set of related tasks per branch).
-Every change to main must be merged through a Pull Request and reviewed by another teammate.
-Each student owns a different section of README.md or ROLES.md to ensure visible contributions.
+* Use feature branches from main (example: feature/member-management, feature/checkin-flow).
+* Keep branches focused (one user story or small set of related tasks per branch).
+* Every change to main must be merged through a Pull Request and reviewed by another teammate.
+* Each student owns a different section of README.md or ROLES.md to ensure visible contributions.
