@@ -1,4 +1,4 @@
-Brianna – Frontend & QA
+Brianna (Scrum Master) – Frontend & QA
 Carlos – QA & Flex
 Evan – Backend
 Alec – Backend & Flex
