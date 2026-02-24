@@ -1,0 +1,9 @@
+/* App.css (reset for this project)
+   If you don't need App.css at all, you can delete this file
+   and remove any import of "./App.css" from your JS files.
+*/
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
