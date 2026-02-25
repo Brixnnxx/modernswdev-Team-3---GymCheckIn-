@@ -1,0 +1,668 @@
+/* =========================
+   Global base
+========================= */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0b0c10;
+  color: #e8e8e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================
+   Utility
+========================= */
+.muted {
+  color: #a7a7a7;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.big {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.divider {
+  height: 1px;
+  background: #1f2430;
+  margin: 12px 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.row.space {
+  justify-content: space-between;
+}
+
+.row.gap {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Key/Value grid */
+.kv {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Stats grid */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  border: 1px solid #1f2430;
+  border-radius: 14px;
+  padding: 12px;
+  background: #0f1117;
+}
+
+/* =========================
+   Buttons / inputs
+========================= */
+.label {
+  display: block;
+  margin: 10px 0 6px;
+  color: #cfcfcf;
+  font-size: 12px;
+}
+
+input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #0b0c10;
+  color: #fff;
+  padding: 10px 12px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #3a3a3a;
+}
+
+/* ✅ Added: select styling (used by POS checkout + other pages) */
+.select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #0b0c10;
+  color: #fff;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.select:focus {
+  border-color: #3a3a3a;
+}
+
+.btn {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #ffffff;
+  color: #000;
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #141821;
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #e8e8e8;
+}
+
+/* =========================
+   Alerts / badges
+========================= */
+.alert {
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid #2a2a2a;
+  background: #0f1117;
+}
+
+.alert-ok {
+  border-color: #1c5a2f;
+}
+
+.alert-bad {
+  border-color: #7a1a1a;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #2a2a2a;
+  background: #0f1117;
+  color: #e8e8e8;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.badge-ok {
+  border-color: #1c5a2f;
+}
+
+.badge-warn {
+  border-color: #2b4aa5;
+}
+
+.badge-bad {
+  border-color: #7a1a1a;
+}
+
+/* =========================
+   Panels / layout
+========================= */
+.panel {
+  background: #0f1117;
+  border: 1px solid #1f2430;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 12px;
+}
+
+/* Main app layout */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  border-right: 1px solid #1f2430;
+  background: #0f1117;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #1f2430;
+  border-radius: 16px;
+  background: #0b0c10;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #1f2430;
+  background: #0f1117;
+}
+
+.brand-title {
+  font-weight: 900;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
+.nav {
+  display: grid;
+  gap: 8px;
+}
+
+.navlink {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.navlink.active {
+  border-color: #3a3a3a;
+  background: #141821;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px;
+  border: 1px solid #1f2430;
+  border-radius: 16px;
+  background: #0b0c10;
+  display: grid;
+  gap: 8px;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.topbar {
+  padding: 14px;
+  border-bottom: 1px solid #1f2430;
+  background: #0f1117;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  padding: 14px;
+}
+
+/* Selected member area in topbar */
+.selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.selected-name {
+  font-weight: 800;
+}
+
+/* =========================
+   Login page
+========================= */
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.card {
+  width: 360px;
+  max-width: 95vw;
+  background: #0f1117;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+/* =========================
+   Member search dropdown
+========================= */
+.searchbox {
+  position: relative;
+  width: 520px;
+  max-width: 58vw;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #0f1117;
+  border: 1px solid #1f2430;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.search-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: transparent;
+  border: 0;
+  color: #e8e8e8;
+  cursor: pointer;
+  border-bottom: 1px solid #1f2430;
+}
+
+.search-item:last-child {
+  border-bottom: 0;
+}
+
+.search-item:hover {
+  background: #141821;
+}
+
+.search-empty {
+  padding: 10px 12px;
+}
+
+/* =========================
+   CHECK-IN: always-visible bar + profile card (queue ready)
+========================= */
+.checkin-bar-inline {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Profile display card */
+.checkin-card {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 3px solid #222;
+  background: #0b0c10;
+}
+
+.member-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid #222;
+}
+
+.member-photo.placeholder {
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 26px;
+  background: #12141a;
+  color: #fff;
+}
+
+/* Status borders */
+.status-active {
+  border-color: #1c5a2f;
+} /* green */
+.status-frozen {
+  border-color: #2b4aa5;
+} /* blue */
+
+/* Flashing red for inactive/cancelled */
+@keyframes danger-flash {
+  0% {
+    border-color: #7a1a1a;
+  }
+  50% {
+    border-color: #ff2d2d;
+  }
+  100% {
+    border-color: #7a1a1a;
+  }
+}
+
+.status-bad {
+  border-color: #7a1a1a;
+  animation: danger-flash 0.8s infinite;
+}
+
+/* =========================
+   Responsive tweaks
+========================= */
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 220px 1fr;
+  }
+  .searchbox {
+    width: 360px;
+    max-width: 52vw;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .kv,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .searchbox {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.member-row {
+  text-align: left;
+  width: 100%;
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+}
+.member-row:hover {
+  background: #141821;
+}
+
+/* ===== POS Layout ===== */
+
+.pos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pos-search {
+  position: relative;
+}
+
+.pos-search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #0f1117;
+  border: 1px solid #1f2430;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pos-search-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: #e8e8e8;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-bottom: 1px solid #1f2430;
+}
+.pos-search-item:last-child {
+  border-bottom: 0;
+}
+.pos-search-item:hover {
+  background: #141821;
+}
+
+.bubble-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bubble {
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+}
+.bubble:hover {
+  background: #141821;
+}
+
+.pos-cart {
+  display: grid;
+  gap: 10px;
+}
+
+.pos-cart-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  border-radius: 16px;
+}
+
+.pos-totals {
+  display: grid;
+  gap: 6px;
+}
+
+/* Tabs */
+.tabbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+}
+.tab.active {
+  background: #141821;
+  border-color: #3a3a3a;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.catalog-item {
+  text-align: left;
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+}
+.catalog-item:hover {
+  background: #141821;
+}
+
+/* Checkout chips */
+.chip {
+  border: 1px solid #1f2430;
+  background: #0b0c10;
+  color: #e8e8e8;
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+}
+.chip.active {
+  background: #141821;
+  border-color: #3a3a3a;
+}
+
+/* Receipt box */
+.receipt {
+  border: 1px dashed #3a3a3a;
+  background: #0b0c10;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .pos-grid {
+    grid-template-columns: 1fr;
+  }
+  .catalog {
+    grid-template-columns: 1fr;
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: inherit;
+  resize: vertical;
+  min-height: 96px;
+}

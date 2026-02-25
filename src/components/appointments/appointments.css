@@ -1,0 +1,328 @@
+/* =========================
+   Appointments (hard-contained scheduler + sidebar MemberSearch)
+========================= */
+
+/* =========================
+   Layout
+========================= */
+.mb-wrap { display: flex; gap: 16px; align-items: flex-start; }
+
+/* Sidebar */
+.mb-left {
+  width: 280px;
+  flex: 0 0 280px;
+  position: sticky;
+  top: 12px;
+  align-self: flex-start;
+
+  /* ✅ KEY: prevent sideways bleed into scheduler */
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  min-width: 0;
+}
+
+/* Main area */
+.mb-main { flex: 1; min-width: 0; }
+
+/* =========================
+   Toolbar
+========================= */
+.mb-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.mb-toolbar-left, .mb-toolbar-right { display: flex; align-items: center; gap: 8px; }
+.mb-date-label { font-weight: 900; opacity: 0.95; }
+
+/* =========================
+   Scheduler (CONTAINED)
+========================= */
+.mb-sched { margin-top: 12px; min-width: 0; }
+
+/* header row */
+.mb-sched-head { display: flex; min-width: 0; }
+.mb-time-head { width: 80px; flex: 0 0 80px; }
+
+/* header scroll: horizontal only */
+.mb-trainer-scrollhead {
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  min-width: 0;
+}
+.mb-trainer-head-row { display: grid; min-width: max-content; }
+
+/* body rows wrapper */
+.mb-sched-body {
+  display: flex;
+  height: min(640px, calc(100vh - 250px));
+  overflow: auto;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.01);
+
+  min-width: 0;
+}
+
+/* sticky time column inside the scroll container */
+.mb-time-col {
+  width: 80px;
+  flex: 0 0 80px;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: rgba(12, 13, 18, 0.95);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+/* trainer cols grid */
+.mb-trainer-cols { display: grid; position: relative; min-width: max-content; }
+
+/* columns + grid lines */
+.mb-col { position: relative; border-left: 1px solid rgba(255,255,255,0.06); cursor: pointer; }
+.mb-col:hover { background: rgba(255,255,255,0.02); }
+.mb-slot-line { border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+/* time rows */
+.mb-time-row {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px;
+  opacity: 0.85;
+  padding-left: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* trainer headers */
+.mb-trainer-head {
+  padding: 10px 10px;
+  font-weight: 900;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.mb-trainer-head .muted { opacity: 0.8; }
+
+/* =========================
+   Appointment blocks
+========================= */
+.appt {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.appt:hover { transform: translateY(-1px); transition: 120ms ease; }
+.appt-inner { pointer-events: none; }
+.appt-title { font-weight: 900; font-size: 12px; }
+.appt-sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+.appt-del {
+  position: absolute;
+  top: 6px; right: 6px;
+  border: none;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.9);
+  border-radius: 8px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.appt-del:hover { background: rgba(0,0,0,0.45); }
+
+.appt-blue { background: rgba(80,160,255,0.22); border: 1px solid rgba(80,160,255,0.35); }
+.appt-green { background: rgba(60,200,120,0.22); border: 1px solid rgba(60,200,120,0.35); }
+.appt-gray { background: rgba(200,200,200,0.14); border: 1px solid rgba(200,200,200,0.22); }
+
+/* =========================
+   Mini Calendar
+========================= */
+.mini-cal { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 10px; }
+.mini-cal-head { display: flex; justify-content: space-between; align-items: center; }
+.mini-cal-title { font-weight: 900; }
+.mini-cal-nav {
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.mini-cal-nav:hover { background: rgba(255,255,255,0.06); }
+
+.mini-cal-dow { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 8px; }
+.mini-cal-dow-cell { font-size: 11px; opacity: 0.8; text-align: center; padding: 4px 0; }
+
+.mini-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 6px; }
+.mini-cal-cell {
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.92);
+  border-radius: 10px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.mini-cal-cell:hover { background: rgba(255,255,255,0.06); }
+.mini-cal-cell.dim { opacity: 0.45; }
+.mini-cal-cell.sel { outline: 2px solid rgba(80,160,255,0.45); background: rgba(80,160,255,0.10); }
+
+/* =========================
+   Sidebar slot form
+========================= */
+.mb-slot-form {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 12px;
+
+  /* ✅ KEY: stop sideways overflow, allow dropdown vertically */
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  min-width: 0;
+}
+
+/* ✅ If you're using Bootstrap `.row`, this prevents negative margins from widening things */
+.mb-slot-form .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* chips (duration buttons) */
+.chip {
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.92);
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+}
+.chip:hover { background: rgba(255,255,255,0.06); }
+.chip.active {
+  border-color: rgba(80,160,255,0.45);
+  background: rgba(80,160,255,0.14);
+}
+
+/* =========================
+   MemberSearch styling (SIDEBAR HARD OVERRIDES)
+   This works even if your component classes differ.
+========================= */
+
+/* Force *any* text input in the slot form to never exceed the card width */
+.mb-slot-form input[type="text"],
+.mb-slot-form input[type="search"],
+.mb-slot-form input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+/* If your MemberSearch uses these classes, keep them tight too */
+.searchbox {
+  position: relative;
+  margin-top: 6px;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.searchbox input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Dropdown: match input width, no sideways overflow */
+.search-results {
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+
+  background: rgba(15,17,23,0.98);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+  max-height: 260px;
+  overflow: auto;
+}
+
+.search-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.92);
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.search-item:hover {
+  border-color: rgba(80,160,255,0.30);
+  background: rgba(80,160,255,0.08);
+}
+.search-item .name { font-weight: 900; }
+
+.search-empty {
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+
+/* Optional: selected member pill */
+.mb-selected-pill {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.mb-selected-pill strong { font-weight: 900; }
+
+/* =========================
+   Scrollbars polish
+========================= */
+.mb-sched-body::-webkit-scrollbar { height: 12px; width: 12px; }
+.mb-sched-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 999px; }
+.mb-sched-body::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }
+
+.mb-trainer-scrollhead::-webkit-scrollbar { height: 10px; }
+.mb-trainer-scrollhead::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 999px; }
+.mb-trainer-scrollhead::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }
+
+/* Toolbar view dropdown caret */
+.mb-select-wrap {
+  position: relative;
+  display: inline-block;
+  width: 170px;
+  max-width: 100%;
+}
+
+.mb-select-wrap .select { width: 100%; padding-right: 32px; }
+
+.mb-select-caret {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-45%);
+  pointer-events: none;
+  opacity: 0.8;
+  font-weight: 900;
+}
