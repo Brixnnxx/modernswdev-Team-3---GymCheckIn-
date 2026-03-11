@@ -36,6 +36,7 @@ export default function MemberNew({ state, setState }) {
       photo_alt_text: "",
       member_code: `QR-${String(nextId).padStart(4, "0")}`,
       status: "active",
+      membership_plan: "",
     });
   }, [nextId, form]);
 
@@ -132,6 +133,19 @@ export default function MemberNew({ state, setState }) {
               </select>
             </div>
 
+<div>
+  <label className="label">Membership Plan</label>
+  <select
+    className="select"
+    value={form.membership_plan}
+    onChange={(e) => update("membership_plan", e.target.value)}>
+    <option value="">Select a plan</option>
+    <option value="basic">Basic - $20/month</option>
+    <option value="standard">Standard - $35/month</option>
+    <option value="premium">Premium - $50/month</option>
+  </select>
+</div>
+            
             <div>
               <label className="label">First Name</label>
               <input value={form.first_name} onChange={(e) => update("first_name", e.target.value)} />
@@ -283,3 +297,4 @@ function initials(first, last) {
   const b = String(last || "").trim().slice(0, 1).toUpperCase();
   return (a + b) || "??";
 }
+
